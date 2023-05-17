@@ -11,7 +11,6 @@ b0 = 785.1811367994083
 w0 = np.array([ 0.39133535, 18.75376745, 3.36032453, -26.42131618])
 
 # step1 : computing model out put for every input
-
 def model_output(x, w , b):
     m = x.shape[0]
     y = np.zeros(m)
