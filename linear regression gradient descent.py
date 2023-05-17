@@ -1,4 +1,4 @@
-# Full mplemantion of Linear Regression 
+# Full implementation of Linear Regression 
  
 import numpy as np
 import copy
