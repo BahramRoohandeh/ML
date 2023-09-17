@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+# findig closest centroid for every single point
 def find_closest_centroids(X, centroids):
     K = centroids.shape[0]
     m = X.shape[0]
@@ -15,7 +15,7 @@ def find_closest_centroids(X, centroids):
         
     return idx
             
-            
+# computing new centroid position            
 def compute_centroids(X, idx, K):
     m_k = np.zeros((K , X.shape[1]))
     for i in range(K):
@@ -25,7 +25,7 @@ def compute_centroids(X, idx, K):
         
     return m_k
     
-    
+# running algorithm of k-means   
 def run_kMeans(X, initial_centroids, max_iters=10, plot_progress=False):
     K = initial_centroids.shape[0]
     centroids = initial_centroids
@@ -36,7 +36,7 @@ def run_kMeans(X, initial_centroids, max_iters=10, plot_progress=False):
         centroids = compute_centroids(X, idx, K)
     return centroids, idx
     
-
+# choosing initial centroids randomly
 def kMeans_init_centroids(X, K):
 
     randidx = np.random.permutation(X.shape[0])
@@ -44,12 +44,13 @@ def kMeans_init_centroids(X, K):
     centroids = X[randidx[:K]]
     
     return centroids    
-    
+
+# input image
 image_adress = input('please enter impage path.name')
 original_img = plt.imread(image_adress)
 plt.imshow(original_img)
 
-
+#input number of clusters 
 X_img = np.reshape(original_img, (original_img.shape[0] * original_img.shape[1], 3))
 K = input('please enter K')
 K = int(K)
@@ -63,4 +64,5 @@ for i in range(X_img.shape[0]):
     
 X_recovered = np.reshape( X_img, original_img.shape) 
 
+#final result
 plt.imshow(X_recovered)
